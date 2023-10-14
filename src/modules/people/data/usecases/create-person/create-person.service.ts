@@ -27,8 +27,10 @@ export class DbCreatePersonService implements ICreatePerson {
     if (!validDocument)
       throw new BadRequestException('Provided document is invalid');
 
+    const formattedDocument = request.document.replace(/[-.]/g, '');
+
     const existingDocument = await this.peopleRepository.findPersonByDocument(
-      request.document,
+      formattedDocument,
     );
 
     if (existingDocument) {
@@ -36,7 +38,6 @@ export class DbCreatePersonService implements ICreatePerson {
     }
 
     const hashedPassword = await hash(request.password, 10);
-    const formattedDocument = request.document.replace(/[-.]/g, '');
 
     const personToCreate: ICreatePersonRequestModel = {
       document: formattedDocument,
