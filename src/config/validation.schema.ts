@@ -8,4 +8,5 @@ export const validationSchema = Joi.object({
   PAGINATION_PAGE: Joi.number().required(),
   PAGINATION_PAGE_SIZE: Joi.number().required(),
   DATABASE_URL: Joi.string().required(),
+  PEOPLE_SECRET: Joi.string().required(),
 });

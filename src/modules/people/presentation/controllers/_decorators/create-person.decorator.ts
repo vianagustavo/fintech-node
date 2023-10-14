@@ -1,6 +1,7 @@
-import { applyDecorators, Controller, Post } from '@nestjs/common';
+import { applyDecorators, Controller, Post, UseGuards } from '@nestjs/common';
 import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePersonDto } from '../../dtos';
+import { AuthGuard } from 'src/modules/people/guards';
 
 const RESOURCE_NAME = 'people';
 
