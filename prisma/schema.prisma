@@ -12,8 +12,22 @@ model People {
   name String
   document String
   password String
+  accounts Account[]
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) 
 
   @@map("people")
+}
+
+model Account {
+  id          String          @id @default(uuid())
+  branch String
+  account String
+  accountBalance Float
+  people     People         @relation(fields: [peopleId], references: [id])
+  peopleId   String
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @default(now())
+
+  @@map("accounts")
 }

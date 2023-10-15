@@ -41,5 +41,6 @@ import { JwtModule } from '@nestjs/jwt';
     },
   ],
   controllers: [CreatePersonController, PersonLoginController],
+  exports: [PEOPLE_REPOSITORY],
 })
 export class PeopleModule {}
