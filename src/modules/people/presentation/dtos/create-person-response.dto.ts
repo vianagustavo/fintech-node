@@ -5,7 +5,7 @@ import { Exclude, Expose } from 'class-transformer';
 import { IPeopleModel } from '../../domain';
 
 @Expose()
-export class CreatePersonDto implements IPeopleModel {
+export class CreatePersonResponseDto implements IPeopleModel {
   @ApiProperty()
   id: string;
 
@@ -24,7 +24,7 @@ export class CreatePersonDto implements IPeopleModel {
   @ApiProperty()
   updatedAt: Date;
 
-  constructor(partial: Partial<CreatePersonDto>) {
+  constructor(partial: Partial<CreatePersonResponseDto>) {
     Object.assign(this, partial);
   }
 }

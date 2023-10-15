@@ -1,7 +1,6 @@
 import { applyDecorators, Controller, Post, UseGuards } from '@nestjs/common';
-import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
-import { CreatePersonDto } from '../../dtos';
-import { AuthGuard } from 'src/modules/people/guards';
+import { ApiBody, ApiOkResponse, ApiTags } from '@nestjs/swagger';
+import { CreatePersonRequestDto, CreatePersonResponseDto } from '../../dtos';
 
 const RESOURCE_NAME = 'people';
 
@@ -12,9 +11,10 @@ export function CreatePersonResource(): ClassDecorator {
 export function CreatePerson(): MethodDecorator {
   return applyDecorators(
     Post(),
+    ApiBody({ type: CreatePersonRequestDto }),
     ApiOkResponse({
       description: 'Creates a person',
-      type: CreatePersonDto,
+      type: CreatePersonResponseDto,
     }),
   );
 }

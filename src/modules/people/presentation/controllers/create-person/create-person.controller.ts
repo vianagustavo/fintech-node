@@ -9,7 +9,7 @@ import {
   ICreatePersonRequestModel,
 } from 'src/modules/people/domain';
 import { CREATE_PERSON } from 'src/modules/people/constants';
-import { CreatePersonDto } from '../../dtos';
+import { CreatePersonRequestDto, CreatePersonResponseDto } from '../../dtos';
 
 @CreatePersonResource()
 export class CreatePersonController {
@@ -20,10 +20,10 @@ export class CreatePersonController {
 
   @CreatePerson()
   async create(
-    @Body() request: ICreatePersonRequestModel,
-  ): Promise<CreatePersonDto> {
+    @Body() request: CreatePersonRequestDto,
+  ): Promise<CreatePersonResponseDto> {
     const person = await this.createPerson.execute(request);
 
-    return plainToInstance(CreatePersonDto, person);
+    return plainToInstance(CreatePersonResponseDto, person);
   }
 }
