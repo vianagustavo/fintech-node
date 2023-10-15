@@ -50,4 +50,14 @@ export class PrismaAccountsRepository implements AccountsRepository {
 
     return accounts;
   }
+
+  async findAccountById(accountId: string): Promise<IAccountsModel> {
+    const account = await this.prismaService.account.findUnique({
+      where: {
+        id: accountId,
+      },
+    });
+
+    return account;
+  }
 }

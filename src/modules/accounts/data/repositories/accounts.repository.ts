@@ -9,4 +9,5 @@ export interface AccountsRepository {
     data: ICreateAccountRequestModel,
   ): Promise<IAccountsModel | null>;
   findAccountsByPersonId(personId: string): Promise<IAccountsModel[]>;
+  findAccountById(accountId: string): Promise<IAccountsModel | null>;
 }

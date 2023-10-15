@@ -29,5 +29,6 @@ import { PeopleModule } from '../people/people.module';
     },
   ],
   controllers: [CreateAccountController, GetPersonAccountsController],
+  exports: [ACCOUNTS_REPOSITORY],
 })
 export class AccountsModule {}
