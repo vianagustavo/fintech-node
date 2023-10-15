@@ -20,14 +20,33 @@ model People {
 }
 
 model Account {
-  id          String          @id @default(uuid())
-  branch String
-  account String
+  id         String          @id @default(uuid())
+  branch     String
+  account    String
   accountBalance Float
   people     People         @relation(fields: [peopleId], references: [id])
   peopleId   String
+  cards      Card[]
   createdAt  DateTime        @default(now())
   updatedAt  DateTime        @default(now())
 
   @@map("accounts")
+}
+
+model Card {
+  id          String          @id @default(uuid())
+  number      String
+  cvv         String
+  type        CardType
+  account     Account         @relation(fields: [accountId], references: [id])
+  accountId   String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @default(now())
+
+  @@map("cards")
+}
+
+enum CardType {
+  PHYSICAL
+  VIRTUAL
 }
