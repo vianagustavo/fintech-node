@@ -6,11 +6,12 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  console.log(process.env.NODE_ENV);
+
   const config = new DocumentBuilder()
     .setTitle('Fintech Challenge')
     .setDescription('API Documentation')
     .setVersion('1.0')
-    .addTag('fintech')
     .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);

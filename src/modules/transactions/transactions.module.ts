@@ -2,17 +2,20 @@ import { Module } from '@nestjs/common';
 import {
   CREATE_TRANSACTION,
   GET_ACCOUNT_TRANSACTIONS,
+  REVERT_TRANSACTION,
   TRANSACTIONS_REPOSITORY,
 } from './constants';
 import { PrismaTransactionRepository } from './infra';
 import {
   DbCreateTransactionService,
   DbGetAccountTransactionsService,
+  DbRevertTransactionService,
 } from './data';
 import { AccountsModule } from '../accounts/accounts.module';
 import {
   CreateTransactionController,
   GetAccountTransactionsController,
+  RevertTransactionController,
 } from './presentation';
 
 @Module({
@@ -27,11 +30,19 @@ import {
       useClass: DbGetAccountTransactionsService,
     },
     {
+      provide: REVERT_TRANSACTION,
+      useClass: DbRevertTransactionService,
+    },
+    {
       provide: TRANSACTIONS_REPOSITORY,
       useClass: PrismaTransactionRepository,
     },
   ],
-  controllers: [CreateTransactionController, GetAccountTransactionsController],
+  controllers: [
+    CreateTransactionController,
+    GetAccountTransactionsController,
+    RevertTransactionController,
+  ],
   exports: [],
 })
 export class TransactionsModule {}

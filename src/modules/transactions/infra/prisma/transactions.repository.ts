@@ -52,4 +52,41 @@ export class PrismaTransactionRepository implements TransactionsRepository {
 
     return accountTransactions;
   }
+
+  async findTransactionById(transactionId: string): Promise<ITransactionModel> {
+    const transaction = await this.prismaService.transaction.findUnique({
+      where: {
+        id: transactionId,
+      },
+    });
+
+    return transaction;
+  }
+
+  async revertTransaction(
+    transactionId: string,
+    accountId: string,
+    updatedBalance: number,
+  ): Promise<boolean> {
+    await this.prismaService.$transaction([
+      this.prismaService.transaction.update({
+        where: {
+          id: transactionId,
+        },
+        data: {
+          revertedAt: new Date(),
+        },
+      }),
+      this.prismaService.account.update({
+        where: {
+          id: accountId,
+        },
+        data: {
+          accountBalance: updatedBalance,
+        },
+      }),
+    ]);
+
+    return true;
+  }
 }

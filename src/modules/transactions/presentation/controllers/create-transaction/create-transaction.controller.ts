@@ -1,4 +1,4 @@
-import { Body, Inject, Param, UnauthorizedException } from '@nestjs/common';
+import { Body, Inject, Param } from '@nestjs/common';
 
 import { plainToInstance } from 'class-transformer';
 
