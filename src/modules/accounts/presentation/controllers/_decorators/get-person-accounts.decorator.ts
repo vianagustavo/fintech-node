@@ -15,7 +15,7 @@ import { AuthGuard } from 'src/modules/people/guards';
 const RESOURCE_NAME = 'people';
 
 export function GetPersonAccountsResource(): ClassDecorator {
-  return applyDecorators(ApiTags(RESOURCE_NAME), Controller(RESOURCE_NAME));
+  return applyDecorators(ApiTags('Accounts'), Controller(RESOURCE_NAME));
 }
 
 export function GetPersonAccounts(): MethodDecorator {

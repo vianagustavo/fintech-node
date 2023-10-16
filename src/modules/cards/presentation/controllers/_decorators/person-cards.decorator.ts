@@ -7,6 +7,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { AuthGuard } from 'src/modules/people/guards';
+import { CardsPageDto } from '../../dtos';
 
 const RESOURCE_NAME = 'people';
 
@@ -36,6 +37,7 @@ export function GetPersonCards(): MethodDecorator {
     }),
     ApiOkResponse({
       description: 'Returns all cards from a person',
+      type: CardsPageDto,
     }),
   );
 }

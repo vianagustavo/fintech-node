@@ -12,7 +12,7 @@ import { AuthGuard } from 'src/modules/people/guards';
 const RESOURCE_NAME = 'accounts';
 
 export function CreateCardResource(): ClassDecorator {
-  return applyDecorators(ApiTags(RESOURCE_NAME), Controller(RESOURCE_NAME));
+  return applyDecorators(ApiTags('Cards'), Controller(RESOURCE_NAME));
 }
 
 export function CreateCard(): MethodDecorator {

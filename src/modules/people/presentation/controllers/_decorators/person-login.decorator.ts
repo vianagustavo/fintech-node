@@ -5,7 +5,7 @@ import { PersonLoginRequestDto } from '../../dtos';
 const RESOURCE_NAME = 'people/login';
 
 export function PersonLoginResource(): ClassDecorator {
-  return applyDecorators(ApiTags(RESOURCE_NAME), Controller(RESOURCE_NAME));
+  return applyDecorators(ApiTags('People'), Controller(RESOURCE_NAME));
 }
 
 export function PersonLogin(): MethodDecorator {

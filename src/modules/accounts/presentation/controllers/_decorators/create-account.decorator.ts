@@ -1,10 +1,4 @@
-import {
-  applyDecorators,
-  Controller,
-  Param,
-  Post,
-  UseGuards,
-} from '@nestjs/common';
+import { applyDecorators, Controller, Post, UseGuards } from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiBody,
@@ -21,7 +15,7 @@ import { AuthGuard } from 'src/modules/people/guards';
 const RESOURCE_NAME = 'people';
 
 export function CreateAccountResource(): ClassDecorator {
-  return applyDecorators(ApiTags(RESOURCE_NAME), Controller(RESOURCE_NAME));
+  return applyDecorators(ApiTags('Accounts'), Controller(RESOURCE_NAME));
 }
 
 export function CreateAccount(): MethodDecorator {
