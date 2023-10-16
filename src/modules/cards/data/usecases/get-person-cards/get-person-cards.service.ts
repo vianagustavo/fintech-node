@@ -40,10 +40,21 @@ export class DbGetPersonCardsService implements IGetPersonCards {
 
     const personCards = await this.cardsRepository.findPersonCards(personId);
 
-    const paginatedCards = await this.paginateService.paginate(
-      personCards,
-      paginationOptions,
-    );
+    const parsedPersonCards: ICardModel[] = personCards.map(card => {
+      const parsedCard: ICardModel = {
+        id: card.id,
+        type: card.type,
+        number: card.number,
+        cvv: card.cvv,
+        createdAt: card.createdAt,
+        updatedAt: card.updatedAt,
+      };
+
+      return parsedCard;
+    });
+
+    const paginatedCards: PageModel<ICardModel> =
+      await this.paginateService.paginate(parsedPersonCards, paginationOptions);
 
     return paginatedCards;
   }

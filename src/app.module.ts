@@ -5,6 +5,7 @@ import { PeopleModule } from './modules/people/people.module';
 import { CommonModule } from './common/common.module';
 import { AccountsModule } from './modules/accounts/accounts.module';
 import { CardsModule } from './modules/cards/cards.module';
+import { TransactionsModule } from './modules/transactions/transactions.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CardsModule } from './modules/cards/cards.module';
     CommonModule,
     CardsModule,
     PeopleModule,
+    TransactionsModule,
   ],
   controllers: [],
   providers: [],

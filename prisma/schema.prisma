@@ -27,6 +27,7 @@ model Account {
   people     People         @relation(fields: [peopleId], references: [id])
   peopleId   String
   cards      Card[]
+  transactions Transaction[]
   createdAt  DateTime        @default(now())
   updatedAt  DateTime        @default(now())
 
@@ -49,4 +50,17 @@ model Card {
 enum CardType {
   PHYSICAL
   VIRTUAL
+}
+
+model Transaction {
+  id             String          @id @default(uuid())
+  value          Float
+  description    String
+  account        Account         @relation(fields: [accountId], references: [id])
+  accountId      String
+  revertedAt     DateTime?         
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @default(now())
+
+  @@map("transactions")
 }

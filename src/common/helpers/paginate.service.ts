@@ -28,7 +28,7 @@ export class PaginateService<TDataType = any> {
     const paginatedObject: PageModel = {
       data: paginatedData,
       pagination: {
-        itemsPerPage: size,
+        itemsPerPage: paginatedData.length,
         currentPage: page,
       },
     };
