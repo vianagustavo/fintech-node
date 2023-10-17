@@ -4,11 +4,8 @@ import { plainToInstance } from 'class-transformer';
 
 import { CreatePerson, CreatePersonResource } from '../_decorators';
 
-import {
-  ICreatePerson,
-  ICreatePersonRequestModel,
-} from 'src/modules/people/domain';
-import { CREATE_PERSON } from 'src/modules/people/constants';
+import { ICreatePerson } from 'src/modules/people/domain';
+import { CREATE_PERSON } from 'src/modules/people/constants/data/usecases';
 import { CreatePersonRequestDto, CreatePersonResponseDto } from '../../dtos';
 
 @CreatePersonResource()

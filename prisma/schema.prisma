@@ -10,7 +10,7 @@ datasource db {
 model People {
   id String @id @default(uuid())
   name String
-  document String
+  document String  @unique()
   password String
   accounts Account[]
   createdAt DateTime @default(now())
