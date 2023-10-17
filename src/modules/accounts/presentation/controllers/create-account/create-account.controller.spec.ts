@@ -3,12 +3,8 @@ import { CreateAccountController } from './create-account.controller';
 import { ICreateAccount } from 'src/modules/accounts/domain';
 import { CREATE_ACCOUNT } from 'src/modules/accounts/constants';
 import { CreateAccountRequestModelDto } from '../../dtos';
-import { UnauthorizedException } from '@nestjs/common';
-import { createMockToken, factories } from 'src/common/infra';
-import { AuthGuard } from 'src/modules/people/guards';
+import { factories } from 'src/common/infra';
 import { JwtService } from '@nestjs/jwt';
-import { MockAuthGuard } from 'src/common/helpers';
-import { response } from 'express';
 
 describe('CreateAccountController', () => {
   const mockCreateAccount = () => ({ execute: jest.fn() });

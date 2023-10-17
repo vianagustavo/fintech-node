@@ -3,4 +3,5 @@ export * from './create-account-response.factory';
 export * from './create-person-request.factory';
 export * from './create-person-response.factory';
 export * from './person-login-request.factory';
+export * from './person-session.factory';
 export * from './token.factory';
