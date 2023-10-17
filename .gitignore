@@ -3,6 +3,7 @@
 /node_modules
 .env*
 !.env.example
+pg-data
 
 # Logs
 logs
