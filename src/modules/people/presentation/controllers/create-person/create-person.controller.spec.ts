@@ -40,6 +40,7 @@ describe('CreatePersonController', () => {
 
     await sut.create(mockedRequest);
 
+    expect(createPerson.execute).toBeCalledTimes(1);
     expect(createPerson.execute).toBeCalledWith(mockedRequest);
   });
 

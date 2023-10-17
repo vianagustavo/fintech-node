@@ -6,8 +6,6 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  console.log(process.env.NODE_ENV);
-
   const config = new DocumentBuilder()
     .setTitle('Fintech Challenge')
     .setDescription('API Documentation')

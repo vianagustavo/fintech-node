@@ -5,6 +5,8 @@ import {
   createMockToken,
   createPersonRequestFactory,
   createPersonResponseFactory,
+  personLoginRequestFactory,
+  personSessionFactory,
 } from '../fintech';
 
 export const factories = {
@@ -13,5 +15,7 @@ export const factories = {
   createAccountResponseFactory,
   createPersonRequestFactory,
   createPersonResponseFactory,
+  personLoginRequestFactory,
+  personSessionFactory,
   createMockToken,
 };

@@ -2,16 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CreateAccountController } from './create-account.controller';
 import { ICreateAccount } from 'src/modules/accounts/domain';
 import { CREATE_ACCOUNT } from 'src/modules/accounts/constants';
-import {
-  CreateAccountRequestModelDto,
-  CreateAccountResponseDto,
-} from '../../dtos';
-import { UnauthorizedException } from '@nestjs/common';
-import { createMockToken, factories } from 'src/common/infra';
-import { AuthGuard } from 'src/modules/people/guards';
+import { CreateAccountRequestModelDto } from '../../dtos';
+import { factories } from 'src/common/infra';
 import { JwtService } from '@nestjs/jwt';
-import { MockAuthGuard } from 'src/common/helpers';
-import { response } from 'express';
 
 describe('CreateAccountController', () => {
   const mockCreateAccount = () => ({ execute: jest.fn() });
@@ -35,10 +28,7 @@ describe('CreateAccountController', () => {
           },
         },
       ],
-    })
-      .overrideGuard(AuthGuard)
-      .useClass(MockAuthGuard)
-      .compile();
+    }).compile();
 
     sut = module.get(CreateAccountController);
     createAccount = module.get(CREATE_ACCOUNT);
@@ -54,14 +44,14 @@ describe('CreateAccountController', () => {
     const createAccountResponse =
       factories.createAccountResponseFactory.build();
 
-    const peopleId = '125215216';
+    const peopleId = factories.faker.random.alphaNumeric();
 
     jest
       .spyOn(createAccount, 'execute')
       .mockResolvedValueOnce(createAccountResponse);
 
     const response = await sut.create(createAccountRequest, peopleId, {
-      document: '214215421',
+      document: factories.faker.random.alphaNumeric(),
       sub: peopleId,
     });
 
