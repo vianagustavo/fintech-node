@@ -71,7 +71,7 @@ $ npm run test
 
 Foram utilizados os conceitos de CI/CD, através do GitHub Actions, sempre que for feito um push ou pull-request para a branch main, adotando boas práticas de desenvolvimento e automação da implantação da nossa aplicação.
 
-Os principais steps envolvem o build do projeto e a realização dos testes para cada pipeline
+Os principais steps envolvem o type-check do projeto e a realização dos testes para cada pipeline
 
 O workflow completo pode ser encontrado em:
 
