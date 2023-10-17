@@ -38,12 +38,6 @@ Inicialmente é necessário criar e setar variáveis de ambiente de acordo. Os e
 
 É necessário criar um arquivo `.env` ou `.env.development` e realizar a configuração. Caso alguma env estiver faltando, a inicialização do projeto irá falhar e você poderá ver qual está faltando, de acordo com a validação feita no arquivo `./src/config/validation.schema`
 
-## Inicializando
-
-- Clonar o repositório: `git clone git@github.com:vianagustavo/fintech-node.git`
-- Buildar o projeto: `npm run build`
-- Executar aplicação: `npm run start`
-
 ## Gerando e Implementando Migrations (Prisma)
 
 Todas as migrations utilizadas para manutenção e criação das tabelas do banco de dados do projeto podem ser encontradas dentro da própria pasta do Prisma.
@@ -54,6 +48,12 @@ Para rodar as migrations existentes no projeto e configurar um banco de dados:
 $ npx prisma migrate dev
 
 ```
+
+## Inicializando
+
+- Clonar o repositório: `git clone git@github.com:vianagustavo/fintech-node.git`
+- Buildar o projeto: `npm run build`
+- Executar aplicação: `npm run start`
 
 ## Rodando Testes
 
